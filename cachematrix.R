@@ -18,14 +18,13 @@ s <- NULL
 
 ## The Same pattern is implemented here, replaced the "mean" into "solve" and "m" to "s" to finalize
 
-cacheSolve <- function(x, ...) {
-        s <- x$getsolve()
-  if(!is.null(s)) {
-    message("getting matrix")
-    return(s)
+ j <- x$getInverse()
+  if(!is.null(s)){
+  message("getting cached data")
+  return(s)
   }
-  data <- x$get()
-  s <- solve(data, ...)
-  x$setsolve(s)
+  mat <- x$get()
+  s <- solve(mat,...)
+  x$setInverse(s)
   s
-  }
+}
